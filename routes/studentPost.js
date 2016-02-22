@@ -19,7 +19,7 @@ module.exports = function (app, studentData) {
 
 function writeActionToDB(studentData, req, res, next) {
     console.log("--------------- Writing to DB ---------------");
-    var actionData = {action : req.body.action, time : $currentDate};
+    var actionData = {action : req.body.action, code : req.body.code};
     console.log("[ACTIONDATA] : " + actionData);
     // Writes to collection actionData
     studentData.insert(actionData, function(err, data) {

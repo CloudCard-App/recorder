@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var mongo = require('mongodb');
-mongo.connect('mongodb://localhost:27017/studentsDataDB', startListening);
+mongo.connect('mongodb://104.197.205.159:80/studentsDataDB', startListening);
 
 var db = null;
 var studentData = null;
@@ -59,6 +59,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 //    });
 //});
 
+var testFlag = false;
+
+if (testFlag) {
+
+    require('./routes/studentPost.js')(app, null);
+    app.listen(80, "10.128.0.2");
+    console.log("Listening on port 80!");
+
+}
+
 function startListening(err, db) {
     if (err) {
         // Print error to console
@@ -69,9 +79,6 @@ function startListening(err, db) {
 
         db.createCollection('studentData', function(err, collection) {
             studentData = collection;
-
-            studentData.insert({hello: 'world'});
-            console.log("Write hello world to DB!");
 
             // Must be before error handling and catching 404
             require('./routes/studentPost.js')(app, studentData);
