@@ -5,6 +5,12 @@
   "scripts": {
     "start": "npm start"
   },
+  "author": "Marc Bacvanski"
+  "contributors": [{
+    "name": "Marc Bacvanski"
+    "email": "marc.bacvanski@gmail.com"
+  }]
+  "main": "app.js",
   "dependencies": {
     "body-parser": "~1.13.2",
     "cookie-parser": "~1.3.5",
