@@ -1,15 +1,9 @@
 module.exports = function (app, studentData) {
-    /* GET */
+    /* POST WITH STUDENT DATA */
     app.post('/studentPost/', function (req, res, next) {
-        console.log("Calling to write action to DB!");
-        var actionData = req.body.action;
-        //studentData.insert(actionData, function () {
-        //    res.status(200);
-        //    res.end();
-        //});
         writeActionToDB(studentData, req, res, next)
     });
-
+    /* GET FOR HOME PAGE */
     app.get('/', function (req, res, next) {
         console.log("Rendering home! ");
         res.status(200);
@@ -20,14 +14,15 @@ module.exports = function (app, studentData) {
 function writeActionToDB(studentData, req, res, next) {
     console.log("--------------- Writing to DB ---------------");
     var actionData = {action : req.body.action, code : req.body.code};
-    console.log("[ACTIONDATA] : " + actionData);
-    // Writes to collection actionData
+    console.log("Writing action data: " + actionData);
     studentData.insert(actionData, function(err, data) {
         if (!err) {
             res.status(200);
             res.send();
-            console.log("No errors in writing to DB");
+            console.log("Writing action data successful");
         } else {
+            res.status(500);
+            res.send();
             console.error(err);
         }
     });
