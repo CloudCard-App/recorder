@@ -33,18 +33,6 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-// catch 404 and forward to error handler
-// Should be after all routing is done
-app.use(function (req, res, next) {
-    console.log("Not found!");
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-
-// error handlers
-
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
@@ -68,6 +56,9 @@ app.use(function (err, req, res, next) {
 });
 
 function startListening(err, db) {
+    // Must be before error handling and catching 404
+    require('./routes/studentPost.js')(app, studentData);
+
     if (err) {
         // Print error to console
         return console.dir(err);
@@ -75,14 +66,21 @@ function startListening(err, db) {
         // Assign db to what we get
         this.db = db;
 
-        db.createCollection('studentData', function(err, collection) {
+        db.createCollection('studentData', function (err, collection) {
             studentData = collection;
-
-            // Must be before error handling and catching 404
-            require('./routes/studentPost.js')(app, studentData);
-
             app.listen(program.port, program.extIP);
             console.log("The good stuff lives on port: " + program.port);
         });
     }
+
+// error handlers
+
+// catch 404 and forward to error handler
+// Should be after all routing is done
+    app.use(function (req, res, next) {
+        console.log("Not found!");
+        var err = new Error('Not Found');
+        err.status = 404;
+        next(err);
+    });
 }
