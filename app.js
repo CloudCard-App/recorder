@@ -20,6 +20,7 @@ var db = null;
 var studentData = null;
 
 var app = express();
+var studentPost = require('./routes/studentPost.js')(app, studentData);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -56,8 +57,6 @@ app.use(function (err, req, res, next) {
 });
 
 function startListening(err, db) {
-    // Must be before error handling and catching 404
-    require('./routes/studentPost.js')(app, studentData);
 
     if (err) {
         // Print error to console
@@ -67,9 +66,16 @@ function startListening(err, db) {
         this.db = db;
 
         db.createCollection('studentData', function (err, collection) {
-            studentData = collection;
-            app.listen(program.port, program.extIP);
-            console.log("The good stuff lives on port: " + program.port);
+            if (!err) {
+                console.log("Created collection studentData!");
+                studentData = collection;
+            
+                app.listen(program.port, program.extIP);
+
+                console.log("The good stuff lives on port: " + program.port);
+            } else {
+                console.log("Error in creating studentData collection");
+            }
         });
     }
 

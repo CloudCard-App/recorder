@@ -12,7 +12,10 @@ module.exports = function (app, studentData) {
 };
 
 function writeActionToDB(studentData, req, res, next) {
+    console.log("");
     console.log("--------------- Writing to DB ---------------");
+    console.log("action = " + req.body.action);
+    console.log("code   = " + req.body.code);
     var actionData = {action : req.body.action, code : req.body.code};
     console.log("Writing action data: " + actionData);
     studentData.insert(actionData, function(err, data) {
