@@ -82,7 +82,7 @@ function startListening(err, db) {
             require('./routes/studentPost.js')(app, studentData);
 
             app.listen(program.port, program.extIP);
-            console.log("The good stuff lives on port: " + port);
+            console.log("The good stuff lives on port: " + program.port);
         });
     }
 }
