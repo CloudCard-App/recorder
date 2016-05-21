@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2013b98f-7112-4040-bea2-b885ae66e963" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
     </list>
     <ignored path="FlashCardPostHandler.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -261,7 +260,7 @@
       <updated>1463597213151</updated>
       <workItem from="1463597214404" duration="963000" />
       <workItem from="1463715441244" duration="2247000" />
-      <workItem from="1463850095750" duration="2599000" />
+      <workItem from="1463850095750" duration="2620000" />
     </task>
     <task id="LOCAL-00001" summary="Added gitignore">
       <created>1463850154051</created>
@@ -284,11 +283,18 @@
       <option name="project" value="LOCAL" />
       <updated>1463850194861</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fixed importing of routes">
+      <created>1463853766076</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1463853766076</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5809000" />
+    <option name="totallyTimeSpent" value="5830000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -331,7 +337,8 @@
     <MESSAGE value="Added gitignore" />
     <MESSAGE value="Fixed to give proper port output" />
     <MESSAGE value="Updated workspace metadata" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated workspace metadata" />
+    <MESSAGE value="Fixed importing of routes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed importing of routes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
